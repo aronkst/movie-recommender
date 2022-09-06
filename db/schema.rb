@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_06_010344) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_06_010507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "invalid_movies", force: :cascade do |t|
+    t.string "imdb"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imdb"], name: "index_invalid_movies_on_imdb", unique: true
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string "imdb"

@@ -1,0 +1,2 @@
+class InvalidMovie < ApplicationRecord
+end
