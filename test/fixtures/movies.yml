@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  imdb: MyString
+  title: MyString
+  year: 1
+  summary: MyString
+  score: 1.5
+  amount_of_votes: 1
+  metascore: 1
+  points: 1
+  genres: MyString
+  recommended_movies: MyString
+  url_cover: MyString
+
+two:
+  imdb: MyString
+  title: MyString
+  year: 1
+  summary: MyString
+  score: 1.5
+  amount_of_votes: 1
+  metascore: 1
+  points: 1
+  genres: MyString
+  recommended_movies: MyString
+  url_cover: MyString
