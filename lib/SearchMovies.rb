@@ -4,18 +4,18 @@ require 'nokogiri'
 class SearchMovies
   attr_reader :movies
 
-  def initialize(title)
+  def initialize(query)
     @movies = []
 
-    load_site(title)
-    load_movies
+    load_site(query)
+    load_movies   
   end
 
   private
 
-  def load_site(title)
-    title = title.gsub(' ', '%20')
-    @document = Nokogiri::HTML(URI.open("https://www.imdb.com/find?q=#{title}&s=tt&ttype=ft"))
+  def load_site(query)
+    query = query.gsub(' ', '%20')
+    @document = Nokogiri::HTML(URI.open("https://www.imdb.com/find?q=#{query}&s=tt&ttype=ft"))
   end
 
   def load_movies
