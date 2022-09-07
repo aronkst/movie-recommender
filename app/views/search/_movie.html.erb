@@ -1,0 +1,14 @@
+<div class="card bg-base-100 shadow-xl">
+  <div class="card-body">
+    <div class="content flex">
+      <img class="w-[32px] h-[44px]" src="<%= movie[:url_cover] %>" alt="<%= movie[:imdb] %>" />
+      <div class="ml-2">
+        <h2 class="card-title"><%= movie[:title] %></h2>
+        <p><%= movie[:year] %></p>
+      </div>
+    </div>
+    <div>
+      <%= render get_state(states, movie[:imdb]) %>
+    </div>
+  </div>
+</div>
