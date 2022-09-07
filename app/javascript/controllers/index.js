@@ -4,5 +4,5 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import ReloadController from "./reload_controller"
+application.register("reload", ReloadController)
