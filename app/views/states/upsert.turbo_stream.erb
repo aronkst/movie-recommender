@@ -1,3 +1,9 @@
-<%= turbo_stream.replace "state_imdb_#{@state.imdb}" do %>
-  <%= render @state %>
+<% if @saved %>
+  <%= turbo_stream.replace "state_imdb_#{@state.imdb}" do %>
+    <%= render @state %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.update "modal" do %>
+    <%= render partial: "modal/error", locals: { message: "This movie is invalid" } %>
+  <% end %>
 <% end %>

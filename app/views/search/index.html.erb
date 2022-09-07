@@ -1,4 +1,4 @@
-<form class="mt-5" method="GET" action="/search" id="search-form">
+<form class="mt-5" method="GET" action="/search">
   <div class="card bg-base-100 shadow-xl">
     <div class="card-body">
       <div class="grid grid-cols-1 gap-3">
@@ -23,6 +23,6 @@
 
 <div class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
   <% @movies.each do |movie| %>
-    <%= render partial: "search/movie", locals: { states: @states, movie: movie } %> 
+    <%= render partial: "search/movie", locals: { states: @states, movie: movie } %>
   <% end %>
 </div>
