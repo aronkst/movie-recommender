@@ -17,6 +17,7 @@ class State < ApplicationRecord
       begin
         return save_movie
       rescue
+        InvalidMovie.create!(imdb: imdb)
         return false
       end
     end
