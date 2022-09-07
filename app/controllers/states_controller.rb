@@ -1,9 +1,16 @@
 class StatesController < ApplicationController
   def upsert
-    @state = State.set_value(params[:imdb], params[:value])
+    @state = State.new(imdb: params[:imdb], value: params[:value])
+    @saved = @state.set_movie
 
     respond_to do |format|
-      format.html { redirect_to root_url } # TODO
+      format.html do
+        if @saved
+          redirect_to root_url # TODO
+        else
+          redirect_to root_url # TODO
+        end
+      end
       format.turbo_stream
     end
   end

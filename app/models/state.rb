@@ -1,13 +1,41 @@
 class State < ApplicationRecord
-  def self.set_value(imdb, value)
+  def set_movie
+    movie = valid_movie?
+    return false unless movie
+
+    set_state
+    # TODO Call job
+  end
+
+  private
+
+  def valid_movie?
+    return false if InvalidMovie.exists?(imdb: imdb)
+
+    movie = Movie.find_by(imdb: imdb)
+    if movie.blank?
+      begin
+        return save_movie
+      rescue
+        return false
+      end
+    end
+
+    movie
+  end
+
+  def set_state
     state = State.find_by(imdb: imdb)
 
     if state.blank?
-      State.create!(imdb: imdb, value: value)
+      save!
     else
-      state.update!(value: state.value == value ? nil : value)
+      state.update!(value: value)
     end
+  end
 
-    State.find_by(imdb: imdb)
+  def save_movie
+    get_movie = GetMovie.new(imdb)
+    Movie.from_get_movie(get_movie)
   end
 end
