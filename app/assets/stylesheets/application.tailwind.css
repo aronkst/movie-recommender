@@ -9,3 +9,7 @@ html {
 body {
   min-height: 100%;
 }
+
+.turbo-progress-bar {
+  visibility: hidden;
+}
