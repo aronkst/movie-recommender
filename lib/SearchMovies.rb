@@ -2,10 +2,11 @@ require 'open-uri'
 require 'nokogiri'
 
 class SearchMovies
-  attr_reader :movies
+  attr_reader :movies, :list_imdb
 
   def initialize(query)
     @movies = []
+    @list_imdb = []
 
     load_site(query)
     load_movies   
@@ -31,6 +32,7 @@ class SearchMovies
         url_cover: url_cover,
         year: year
       })
+      @list_imdb.append(imdb)
     rescue
       next
     end

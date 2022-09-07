@@ -1,2 +1,0 @@
-class StateController < ApplicationController
-end
