@@ -1,4 +1,10 @@
 class State < ApplicationRecord
+  validates :imdb, :value, presence: true
+  validates :value, inclusion: { in: %w(like dislike watch_later block) }
+  validates :imdb, uniqueness: true
+
+  has_one :movie, , class_name: "Movie", primary_key: :imdb, foreign_key: :imdb
+
   def set_movie
     movie = valid_movie?
     return false unless movie

@@ -15,24 +15,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_010507) do
   enable_extension "plpgsql"
 
   create_table "invalid_movies", force: :cascade do |t|
-    t.string "imdb"
+    t.string "imdb", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["imdb"], name: "index_invalid_movies_on_imdb", unique: true
   end
 
   create_table "movies", force: :cascade do |t|
-    t.string "imdb"
-    t.string "title"
-    t.integer "year"
-    t.string "summary"
-    t.float "score"
-    t.integer "amount_of_votes"
-    t.integer "metascore"
-    t.integer "points"
-    t.string "genres"
-    t.string "recommended_movies"
-    t.string "url_cover"
+    t.string "imdb", null: false
+    t.string "title", null: false
+    t.integer "year", null: false
+    t.string "summary", null: false
+    t.float "score", null: false
+    t.integer "amount_of_votes", null: false
+    t.integer "metascore", null: false
+    t.integer "points", null: false
+    t.string "genres", default: [], null: false, array: true
+    t.string "recommended_movies", default: [], null: false, array: true
+    t.string "url_cover", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["imdb"], name: "index_movies_on_imdb", unique: true
