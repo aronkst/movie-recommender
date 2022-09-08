@@ -10,7 +10,7 @@ class State < ApplicationRecord
     return false unless movie
 
     set_state
-    # TODO Call job
+    InsertRecommendedMoviesJob.perform_later(movie.imdb)
   end
 
   private
