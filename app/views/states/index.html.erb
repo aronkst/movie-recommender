@@ -1,0 +1,6 @@
+<h1><%= params[:state] %></h1>
+
+<% @movies.each do |movie| %>
+  <code><%= movie.to_json %></code>
+  <hr />
+<% end %>

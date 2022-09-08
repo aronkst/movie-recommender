@@ -1,6 +1,8 @@
 class State < ApplicationRecord
+  VALID_VALUES = %w(like dislike watch_later block).freeze
+
   validates :imdb, :value, presence: true
-  validates :value, inclusion: { in: %w(like dislike watch_later block) }
+  validates :value, inclusion: { in: VALID_VALUES }
   validates :imdb, uniqueness: true
 
   has_one :movie, class_name: "Movie", primary_key: :imdb, foreign_key: :imdb
