@@ -7,7 +7,7 @@ class Movie < ApplicationRecord
   validates :metascore, numericality: { only_integer: true, in: 0..100 }
   validates :imdb, uniqueness: true
 
-  has_one :state, , class_name: "State", primary_key: :imdb, foreign_key: :imdb
+  has_one :state, class_name: "State", primary_key: :imdb, foreign_key: :imdb
 
   def self.from_get_movie(get_movie)
     Movie.create!(imdb: get_movie.imdb, title: get_movie.title, year: get_movie.year, summary: get_movie.summary,
