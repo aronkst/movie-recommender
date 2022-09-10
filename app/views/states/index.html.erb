@@ -2,9 +2,6 @@
 
 <%= render partial: "filter/filter", locals: { route: states_index_path(params[:state]) } %>
 
-<% @movies.each do |movie| %>
-  <code><%= movie.to_json %></code>
-  <hr />
-<% end %>
+<%= render partial: "movies/movies", locals: { movies: @movies } %>
 
 <%= paginate @movies %>

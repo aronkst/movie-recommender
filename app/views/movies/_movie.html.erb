@@ -1,0 +1,30 @@
+<div class="card bg-base-100 shadow-xl">
+  <figure>
+    <img src="<%= movie.url_cover %>" alt="<%= movie.imdb %>" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title"><%= movie.title %></h2>
+    <p><%= movie.year %></p>
+    <p><%= movie.summary %></p>
+    <p><%= movie.genres.join(', ') %></p>
+    <div>
+      <div title="Score" class="badge badge-primary mt-2 mr-2">
+        <%= movie.score %>
+      </div>
+      <div title="Amount Of Votes" class="badge badge-secondary mt-2 mr-2">
+        <%= number_to_human(movie.amount_of_votes) %>
+      </div>
+      <% if movie.metascore.present? %>
+        <div title="Metascore" class="badge badge-accent mt-2 mr-2">
+          <%= movie.metascore %>
+        </div>
+      <% end %>
+      <div title="Points" class="badge mt-2">
+        <%= number_to_human(movie.points) %>
+      </div>
+    </div>
+    <div>
+      <%= render movie.state %>
+    </div>
+  </div>
+</div>
