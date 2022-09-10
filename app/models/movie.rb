@@ -17,4 +17,8 @@ class Movie < ApplicationRecord
                   points: get_movie.points, url_cover: get_movie.url_cover, genres: get_movie.genres,
                   recommended_movies: get_movie.recommended_movies)
   end
+
+  def self.get_from_state(state, page)
+    includes(:state).where(state: { value: state }).order(points: :desc).page(page)
+  end
 end

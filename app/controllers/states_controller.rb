@@ -2,7 +2,7 @@ class StatesController < ApplicationController
   before_action :check_state, only: [:index]
 
   def index
-    @movies = Movie.includes(:state).where(state: { value: params[:state] }).order(points: :desc).page(params["page"])
+    @movies = Movie.get_from_state(params[:state], params["page"])
     @movies = filter_movies(@movies)
   end
 
