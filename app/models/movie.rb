@@ -11,7 +11,7 @@ class Movie < ApplicationRecord
 
   after_create :grab_image
 
-  paginates_per 12
+  paginates_per 6
 
   has_one_attached :cover do |attachable|
     attachable.variant :final, resize_to_limit: [284, 420]
