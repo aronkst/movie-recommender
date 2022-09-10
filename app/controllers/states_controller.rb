@@ -13,9 +13,9 @@ class StatesController < ApplicationController
     respond_to do |format|
       format.html do
         if @saved
-          redirect_to root_url # TODO
+          redirect_to states_index_url(params[:value])
         else
-          redirect_to root_url # TODO
+          redirect_to states_index_url(params[:value]), alert: 'Could not save the status of this movie'
         end
       end
       format.turbo_stream
