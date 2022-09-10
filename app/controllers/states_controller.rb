@@ -2,8 +2,8 @@ class StatesController < ApplicationController
   before_action :check_state, only: [:index]
 
   def index
-    @movies = Movie.includes(:state).where(state: { value: params[:state] })
-    @movies = @movies.where("title LIKE ?", "%#{params["title"]}%") if params["title"].present? # TODO
+    @movies = Movie.includes(:state).where(state: { value: params[:state] }).order(points: :desc).page(params["page"])
+    @movies = filter_movies(@movies)
   end
 
   def upsert

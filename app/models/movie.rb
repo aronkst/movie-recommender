@@ -9,6 +9,8 @@ class Movie < ApplicationRecord
 
   has_one :state, class_name: "State", primary_key: :imdb, foreign_key: :imdb
 
+  paginates_per 12
+
   def self.from_get_movie(get_movie)
     Movie.create!(imdb: get_movie.imdb, title: get_movie.title, year: get_movie.year, summary: get_movie.summary,
                   score: get_movie.score, amount_of_votes: get_movie.amount_of_votes, metascore: get_movie.metascore,
