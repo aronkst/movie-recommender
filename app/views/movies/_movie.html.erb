@@ -24,7 +24,7 @@
       </div>
     </div>
     <div>
-      <%= render movie.state %>
+      <%= render movie.state || State.new(imdb: movie.imdb) %>
     </div>
   </div>
 </div>

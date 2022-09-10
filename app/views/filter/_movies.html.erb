@@ -1,4 +1,4 @@
-<%= render layout: "filter/filter", locals: { route: states_index_path(params[:state]), class_fields: nil } do %>
+<%= render layout: "filter/filter", locals: { route: route, class_fields: nil } do %>
   <%= render partial: "filter/field", locals: { title: "IMDb", name: "imdb", type: "text" } %>
   <%= render partial: "filter/field", locals: { title: "Title", name: "title", type: "text" } %>
   <%= render partial: "filter/field", locals: { title: "Year", name: "year", type: "number" } %>

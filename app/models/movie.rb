@@ -21,4 +21,16 @@ class Movie < ApplicationRecord
   def self.state(state, page)
     includes(:state).where(state: { value: state }).order(points: :desc).page(page)
   end
+
+  def self.recommended(page)
+    like = State.where(value: "like").pluck(:imdb)
+    dislike = State.where(value: "dislike").pluck(:imdb)
+    watch_later = State.where(value: "watch_later").pluck(:imdb)
+    block = State.where(value: "block").pluck(:imdb)
+
+    recommended_movies = where(imdb: like).pluck(:recommended_movies).flatten
+    recommended_movies -= (like + dislike + watch_later + block)
+
+    includes(:state).where(imdb: recommended_movies).order(points: :desc).page(page)
+  end
 end

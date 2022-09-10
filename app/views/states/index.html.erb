@@ -1,5 +1,5 @@
 <h1><%= params[:state] %></h1>
 
-<%= render partial: "filter/movies" %>
+<%= render partial: "filter/movies", locals: { route: states_index_path(params[:state]) } %>
 
 <%= render partial: "movies/movies", locals: { movies: @movies } %>
