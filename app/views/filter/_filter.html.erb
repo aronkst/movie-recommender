@@ -1,0 +1,25 @@
+<form class="mt-5" method="GET" action="<%= route %>">
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <%= render partial: "filter/field", locals: { title: "IMDb", name: "imdb", type: "text" } %>
+        <%= render partial: "filter/field", locals: { title: "Title", name: "title", type: "text" } %>
+        <%= render partial: "filter/field", locals: { title: "Year", name: "year", type: "number" } %>
+        <%= render partial: "filter/field", locals: { title: "Summary", name: "summary", type: "text" } %>
+        <%= render partial: "filter/field", locals: { title: "Score", name: "score", type: "number" } %>
+        <%= render partial: "filter/field", locals: { title: "Amount of Votes", name: "amount_of_votes", type: "number" } %>
+        <%= render partial: "filter/field", locals: { title: "Metascore", name: "metascore", type: "number" } %>
+        <%= render partial: "filter/field", locals: { title: "Points", name: "points", type: "number" } %>
+        <%= render partial: "filter/field", locals: { title: "Genre", name: "genre", type: "text" } %>
+      </div>
+      <div class="self-end mt-5">
+        <button type="reset" class="btn mr-2">
+          Reset
+        </button>
+        <button type="submit" class="btn btn-primary">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
