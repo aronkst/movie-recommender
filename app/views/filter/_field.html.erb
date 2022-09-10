@@ -1,6 +1,6 @@
 <div class="form-control w-full">
-  <label class="label">
+  <label class="label" for="<%= name %>">
     <span class="label-text"><%= title %>:</span>
   </label>
-  <input name="<%= name %>" id="<%= name %>" type="<%= type %>" class="input input-bordered w-full" />
+  <input name="<%= name %>" id="<%= name %>" type="<%= type %>" value="<%= params[name] %>" class="input input-bordered w-full" />
 </div>

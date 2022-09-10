@@ -3,5 +3,3 @@
 <%= render partial: "filter/filter", locals: { route: states_index_path(params[:state]) } %>
 
 <%= render partial: "movies/movies", locals: { movies: @movies } %>
-
-<%= paginate @movies %>
