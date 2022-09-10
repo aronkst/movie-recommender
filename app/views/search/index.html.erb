@@ -1,25 +1,4 @@
-<form class="mt-5" method="GET" action="/search">
-  <div class="card bg-base-100 shadow-xl">
-    <div class="card-body">
-      <div class="grid grid-cols-1 gap-3">
-        <div class="form-control w-full">
-          <label class="label" for="query">
-            <span class="label-text">Title:</span>
-          </label>
-          <input name="query" id="query" type="text" value="<%= params["query"] %>" class="input input-bordered w-full" />
-        </div>
-      </div>
-      <div class="self-end mt-5">
-        <button type="reset" class="btn mr-2">
-          Reset
-        </button>
-        <button type="submit" class="btn btn-primary">
-          Search
-        </button>
-      </div>
-    </div>
-  </div>
-</form>
+<%= render partial: "filter/search" %>
 
 <div class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
   <% @movies.each do |movie| %>

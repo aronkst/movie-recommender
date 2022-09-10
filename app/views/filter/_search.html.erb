@@ -1,0 +1,3 @@
+<%= render layout: "filter/filter", locals: { route: search_index_path, class_fields: "grid grid-cols-1 gap-3" } do %>
+  <%= render partial: "filter/field", locals: { title: "Search", name: "query", type: "text" } %>
+<% end %>
