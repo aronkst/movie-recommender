@@ -1,11 +1,11 @@
 class State < ApplicationRecord
-  VALID_VALUES = %w(like dislike watch_later block).freeze
+  VALID_VALUES = %w[like dislike watch_later block].freeze
 
   validates :imdb, :value, presence: true
   validates :value, inclusion: { in: VALID_VALUES }
   validates :imdb, uniqueness: true
 
-  has_one :movie, class_name: "Movie", primary_key: :imdb, foreign_key: :imdb
+  has_one :movie, class_name: 'Movie', primary_key: :imdb, foreign_key: :imdb
 
   def set_movie
     movie = valid_movie?
@@ -18,14 +18,14 @@ class State < ApplicationRecord
   private
 
   def valid_movie?
-    return false if InvalidMovie.exists?(imdb: imdb)
+    return false if InvalidMovie.exists?(imdb:)
 
-    movie = Movie.find_by(imdb: imdb)
+    movie = Movie.find_by(imdb:)
     if movie.blank?
       begin
         return save_movie
-      rescue
-        InvalidMovie.create!(imdb: imdb)
+      rescue StandardError
+        InvalidMovie.create!(imdb:)
         return false
       end
     end
@@ -34,12 +34,12 @@ class State < ApplicationRecord
   end
 
   def set_state
-    state = State.find_by(imdb: imdb)
+    state = State.find_by(imdb:)
 
     if state.blank?
       save!
     else
-      state.update!(value: value)
+      state.update!(value:)
     end
   end
 
