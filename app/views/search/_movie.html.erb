@@ -8,7 +8,7 @@
       </div>
     </div>
     <div>
-      <%= render get_state(states, movie[:imdb]) %>
+      <%= render partial: "states/state", locals: { state: get_state(states, movie[:imdb]), from_search: true } %>
     </div>
   </div>
 </div>

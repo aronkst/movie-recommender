@@ -1,6 +1,12 @@
 <% if @saved %>
-  <%= turbo_stream.replace "state_imdb_#{@state.imdb}" do %>
-    <%= render @state %>
+  <% if params["from_search"] == "true" %>
+    <%= turbo_stream.replace "state_imdb_#{@state.imdb}" do %>
+      <%= render partial: "states/state", locals: { state: @state, from_search: params["from_search"] } %>
+    <% end %>
+  <% else %>
+    <%= turbo_stream.append_all "body" do %>
+      <template data-controller="reload"></template>
+    <% end %>
   <% end %>
 <% else %>
   <%= turbo_stream.update "modal" do %>

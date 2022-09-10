@@ -24,7 +24,7 @@
       </div>
     </div>
     <div>
-      <%= render movie.state || State.new(imdb: movie.imdb) %>
+      <%= render partial: "states/state", locals: { state: movie.state || State.new(imdb: movie.imdb), from_search: false } %>
     </div>
   </div>
 </div>
