@@ -1,5 +1,5 @@
 <div class="card bg-base-100 shadow-xl">
-  <figure>
+  <figure class="px-10 pt-10">
     <%= image_tag movie.cover.variant(:final), alt: movie.imdb %>
   </figure>
   <div class="card-body">
@@ -25,6 +25,7 @@
     </div>
     <div>
       <%= render partial: "states/state", locals: { state: movie.state || State.new(imdb: movie.imdb), from_search: false } %>
+      <a class="mt-5 btn btn-warning btn-xs" href="https://www.imdb.com/title/<%= movie[:imdb] %>" target="_blank">See on IMDb</a>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<h1><%= params[:state] %></h1>
+<h1 class="text-4xl"><%= params[:state].titleize %></h1>
 
 <%= render partial: "filter/movies", locals: { route: states_index_path(params[:state]) } %>
 

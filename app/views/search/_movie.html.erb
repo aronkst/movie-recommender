@@ -9,6 +9,7 @@
     </div>
     <div>
       <%= render partial: "states/state", locals: { state: get_state(states, movie[:imdb]), from_search: true } %>
+      <a class="mt-5 btn btn-warning btn-xs" href="https://www.imdb.com/title/<%= movie[:imdb] %>" target="_blank">See on IMDb</a>
     </div>
   </div>
 </div>
