@@ -7,7 +7,7 @@ class Movie < ApplicationRecord
   validates :metascore, numericality: { only_integer: true, in: 0..100 }
   validates :imdb, uniqueness: true
 
-  has_one :state, class_name: 'State', primary_key: :imdb, foreign_key: :imdb
+  has_one :state, class_name: "State", primary_key: :imdb, foreign_key: :imdb
 
   after_create :grab_image
 
@@ -29,10 +29,10 @@ class Movie < ApplicationRecord
   end
 
   def self.recommended(page)
-    like = State.where(value: 'like').pluck(:imdb)
-    dislike = State.where(value: 'dislike').pluck(:imdb)
-    watch_later = State.where(value: 'watch_later').pluck(:imdb)
-    block = State.where(value: 'block').pluck(:imdb)
+    like = State.where(value: "like").pluck(:imdb)
+    dislike = State.where(value: "dislike").pluck(:imdb)
+    watch_later = State.where(value: "watch_later").pluck(:imdb)
+    block = State.where(value: "block").pluck(:imdb)
 
     recommended_movies = where(imdb: like).pluck(:recommended_movies).flatten
     recommended_movies -= (like + dislike + watch_later + block)
@@ -41,15 +41,15 @@ class Movie < ApplicationRecord
   end
 
   def self.filter(movies, params)
-    movies = movies.where(imdb: params['imdb']) if params['imdb'].present?
-    movies = movies.where('title ILIKE ?', "%#{params['title']}%") if params['title'].present?
-    movies = movies.where(year: params['year']) if params['year'].present?
-    movies = movies.where('summary ILIKE ?', "%#{params['summary']}%") if params['summary'].present?
-    movies = movies.where('score >= ?', params['score']) if params['score'].present?
-    movies = movies.where('amount_of_votes >= ?', params['amount_of_votes']) if params['amount_of_votes'].present?
-    movies = movies.where('metascore >= ?', params['metascore']) if params['metascore'].present?
-    movies = movies.where('points >= ?', params['points']) if params['points'].present?
-    movies = movies.where('? ILIKE ANY (genres)', params['genres']) if params['genres'].present?
+    movies = movies.where(imdb: params["imdb"]) if params["imdb"].present?
+    movies = movies.where("title ILIKE ?", "%#{params["title"]}%") if params["title"].present?
+    movies = movies.where(year: params["year"]) if params["year"].present?
+    movies = movies.where("summary ILIKE ?", "%#{params["summary"]}%") if params["summary"].present?
+    movies = movies.where("score >= ?", params["score"]) if params["score"].present?
+    movies = movies.where("amount_of_votes >= ?", params["amount_of_votes"]) if params["amount_of_votes"].present?
+    movies = movies.where("metascore >= ?", params["metascore"]) if params["metascore"].present?
+    movies = movies.where("points >= ?", params["points"]) if params["points"].present?
+    movies = movies.where("? ILIKE ANY (genres)", params["genres"]) if params["genres"].present?
     movies
   end
 

@@ -27,13 +27,13 @@ class SearchMovies
       year = year_value(tr)
 
       @movies.append({
-                       imdb:,
-                       title:,
-                       url_cover:,
-                       year:
-                     })
+        imdb: imdb,
+        title: title,
+        url_cover: url_cover,
+        year: year
+      })
       @list_imdb.append(imdb)
-    rescue StandardError
+    rescue
       next
     end
   end

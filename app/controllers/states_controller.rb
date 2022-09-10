@@ -2,7 +2,7 @@ class StatesController < ApplicationController
   before_action :check_state, only: [:index]
 
   def index
-    @movies = Movie.state(params[:state], params['page'])
+    @movies = Movie.state(params[:state], params["page"])
     @movies = Movie.filter(@movies, params)
   end
 
@@ -25,6 +25,6 @@ class StatesController < ApplicationController
   private
 
   def check_state
-    raise ActionController::RoutingError, 'Not Found' unless State::VALID_VALUES.include?(params[:state])
+    raise ActionController::RoutingError.new('Not Found') unless State::VALID_VALUES.include?(params[:state])
   end
 end
