@@ -9,7 +9,13 @@ class Movie < ApplicationRecord
 
   has_one :state, class_name: "State", primary_key: :imdb, foreign_key: :imdb
 
+  after_create :grab_image
+
   paginates_per 12
+
+  has_one_attached :cover do |attachable|
+    attachable.variant :final, resize_to_limit: [284, 420]
+  end
 
   def self.from_get_movie(get_movie)
     Movie.create!(imdb: get_movie.imdb, title: get_movie.title, year: get_movie.year, summary: get_movie.summary,
@@ -32,5 +38,12 @@ class Movie < ApplicationRecord
     recommended_movies -= (like + dislike + watch_later + block)
 
     includes(:state).where(imdb: recommended_movies).order(points: :desc).page(page)
+  end
+
+  private
+
+  def grab_image
+    downloaded_image = URI.parse(url_cover).open
+    cover.attach(io: downloaded_image, filename: "#{imdb}.jpg")
   end
 end

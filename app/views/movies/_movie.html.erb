@@ -1,6 +1,6 @@
 <div class="card bg-base-100 shadow-xl">
   <figure>
-    <img src="<%= movie.url_cover %>" alt="<%= movie.imdb %>" />
+    <%= image_tag movie.cover.variant(:final), alt: movie.imdb %>
   </figure>
   <div class="card-body">
     <h2 class="card-title"><%= movie.title %></h2>
