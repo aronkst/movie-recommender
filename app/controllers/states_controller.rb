@@ -3,7 +3,7 @@ class StatesController < ApplicationController
 
   def index
     @movies = Movie.state(params[:state], params["page"])
-    @movies = filter_movies(@movies)
+    @movies = Movie.filter(@movies, params)
   end
 
   def upsert

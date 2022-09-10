@@ -9,7 +9,7 @@ class SearchMovies
     @list_imdb = []
 
     load_site(query)
-    load_movies   
+    load_movies
   end
 
   private

@@ -1,6 +1,6 @@
 class RecommendedMoviesController < ApplicationController
   def index
     @movies = Movie.recommended(params["page"])
-    @movies = filter_movies(@movies)
+    @movies = Movie.filter(@movies, params)
   end
 end
