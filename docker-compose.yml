@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    environment:
+      - DATABASE_HOST=postgres
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - redis
+  postgres:
+    image: postgres:14
+    environment:
+      - POSTGRES_PASSWORD=postgres
+  redis:
+    image: redis:7
