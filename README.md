@@ -55,9 +55,3 @@ View logs for Docker containers:
 ```
 make logs
 ```
-
-Build the application:
-
-```
-make build
-```
