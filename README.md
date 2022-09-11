@@ -1,24 +1,63 @@
-# README
+# Movie Recommender
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a project developed in Ruby and Rails to be a movie recommender.
 
-Things you may want to cover:
+A Crawler was developed to search for information about the movies on IMDb.
 
-* Ruby version
+This application does not need to install Ruby, PostgreSQL or Redis, as this application runs inside Docker.
 
-* System dependencies
+# System dependencies
 
-* Configuration
+Docker and Docker Compose.
 
-* Database creation
+# How to run
 
-* Database initialization
+```
+make run
+```
 
-* How to run the test suite
+Or:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+docker compose -f docker-compose.yml up
+```
 
-* Deployment instructions
+# Makefile
 
-* ...
+There are some commands inside the Makefile to facilitate the development and execution of this project.
+
+Run the DEV MODE (run only PostgreSQL and Redis):
+
+```
+make dev
+```
+
+Run the application:
+
+```
+make run
+```
+
+Start the Docker Compose:
+
+```
+make start
+```
+
+Stop the Docker Compose:
+
+```
+make stop
+```
+
+View logs for Docker containers:
+
+```
+make logs
+```
+
+Build the application:
+
+```
+make build
+```
