@@ -26,26 +26,21 @@ class SearchMovies
       url_cover = tr.at('td.primary_photo a img').attr('src')
       year = year_value(tr)
 
-      @movies.append({
-        imdb: imdb,
-        title: title,
-        url_cover: url_cover,
-        year: year
-      })
+      @movies.append({ imdb: imdb, title: title, url_cover: url_cover, year: year })
       @list_imdb.append(imdb)
     rescue
       next
     end
   end
 
-  def imdb_value(tr)
-    imdb = tr.at('td.result_text a').attr('href')
+  def imdb_value(table)
+    imdb = table.at('td.result_text a').attr('href')
     imdb = imdb.split('/title/')[1]
     imdb.split('/')[0]
   end
 
-  def year_value(tr)
-    year = tr.at('td.result_text').content
+  def year_value(table)
+    year = table.at('td.result_text').content
     year = year.split('(')[1]
     year = year.split(')')[0]
     Integer(year)
