@@ -12,6 +12,3 @@ stop:
 
 log:
 	docker compose logs
-
-build:
-	docker compose build
