@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  imdb: MyString
-  state: MyString
+  imdb: IMDb1
+  value: MyString
 
 two:
-  imdb: MyString
-  state: MyString
+  imdb: IMDb2
+  value: MyString
