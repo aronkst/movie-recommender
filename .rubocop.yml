@@ -4,3 +4,15 @@ Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*.rb'
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*.rb'
+Style/HashSyntax:
+  Enabled: false
+Style/RescueStandardError:
+  Enabled: false
+Style/ExplicitBlockArgument:
+  Enabled: false
